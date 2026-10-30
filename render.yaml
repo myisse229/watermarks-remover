@@ -1,0 +1,21 @@
+# Render Blueprint — HTTP service used by skills/remove-ai-marks
+# Deploy this Blueprint from the repository root in the Render dashboard.
+services:
+  - type: web
+    name: watermarks-remover-api
+    runtime: docker
+    region: frankfurt
+    plan: starter
+    dockerfilePath: ./service/Dockerfile
+    dockerContext: ./service
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: WATERMARKS_SERVER_HOST
+        value: 0.0.0.0
+      - key: WATERMARKS_SERVER_PORT
+        value: "10000"
+      - key: WATERMARKS_SERVER_API_KEY
+        generateValue: true
+      - key: WATERMARKS_SERVER_VERSION
+        value: "0.5.0"
