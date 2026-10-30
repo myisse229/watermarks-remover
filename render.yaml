@@ -5,7 +5,6 @@ services:
     name: watermarks-remover-api
     runtime: docker
     region: frankfurt
-    plan: starter
     dockerfilePath: ./service/Dockerfile
     dockerContext: ./service
     healthCheckPath: /health
@@ -17,5 +16,3 @@ services:
         value: "10000"
       - key: WATERMARKS_SERVER_API_KEY
         generateValue: true
-      - key: WATERMARKS_SERVER_VERSION
-        value: "0.5.0"
